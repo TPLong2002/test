@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib import messages
 from .models import Value
+from pathlib import Path
 
 def Form(request):
-    hd = 'Gửi Hà'
-    ct = 'Yêu em'
+    hd = 'Gửi đến X'
+    p = Path(__file__).with_name('ct.txt')
+    with p.open('r', encoding="utf-8") as f:
+        ct = f.read()
     context = {'ct':ct, 'hd':hd}
     return render(request, 'First/New.html', context)
 def ykien(request):
