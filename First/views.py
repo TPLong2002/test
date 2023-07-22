@@ -19,16 +19,21 @@ def ykien(request):
         messages.info(request, 'Tiếc quá')
     if request.POST['sel'] == '4':
         messages.info(request, 'Mình sẽ chủ động rời khỏi thế giới của bạn')
-    if Value.objects.all():
-        vl = Value.objects.all()[0]
-        vl.Value = request.POST['sel']
-        vl.save()
-    else:
-        vl = Value.objects.create(Value = request.POST['sel'])
-        vl.save()
+    # if Value.objects.all():
+    #     vl = Value.objects.all()[0]
+    #     vl.Value = request.POST['sel']
+    #     vl.save()
+    # else:
+    #     vl = Value.objects.create(Value = request.POST['sel'])
+    #     vl.save()
+    vl = Value.objects.create(Value = request.POST['sel'])
+    vl.save()
     return redirect('/')
 def kq(request):
-    kq = Value.objects.all()[0].Value
-    context = {'kq': kq}
+    # kq = Value.objects.all()[0].Value
+    # Time = Value.objects.all()[0].Time
+    # context = {'kq': kq, 'Time':Time}
+    obj = Value.objects.all()
+    context = {'obj': obj}
     return render(request, 'First/Value.html', context)
 

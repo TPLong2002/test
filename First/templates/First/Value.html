@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    {{kq}}
+    {% for i in obj %}
+        {{i.Value}} {{i.Time}}<br>
+    {% endfor %}
 </body>
 </html>
